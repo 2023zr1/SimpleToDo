@@ -1,5 +1,9 @@
 package com.example.simpletodo;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,10 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -28,7 +28,21 @@ public class EditActivity extends AppCompatActivity {
         etItem = findViewById(R.id.etItem);
         btnSave = findViewById(R.id.btnSave);
 
-        getSupportActionBar().setTitle("Edit item");
+        // Changing the font of what is written on the Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        TextView tv = new TextView(getApplicationContext());
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.euphoria_script);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Edit Item");
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextSize(35);
+        tv.setTextColor(Color.WHITE);
+        tv.setTypeface(typeface, typeface.BOLD);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(tv);
 
         etItem.setText(getIntent().getStringExtra(MainActivity.KEY_ITEM_TEXT));
 

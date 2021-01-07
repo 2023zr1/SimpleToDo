@@ -1,18 +1,26 @@
 package com.example.simpletodo;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import org.apache.commons.io.FileUtils;
+
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +49,20 @@ public class MainActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         etItem = findViewById(R.id.etItem);
         rvItems = findViewById(R.id.rvItems);
+
+        // Changing the font of what is written on the Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        TextView tv = new TextView(getApplicationContext());
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.euphoria_script);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("SimpleTodo");
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextSize(35);
+        tv.setTextColor(Color.WHITE);
+        tv.setTypeface(typeface, typeface.BOLD);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(tv);
 
         loadItems();
 

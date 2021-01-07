@@ -4,16 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pink_100"
     tools:context=".EditActivity">
 
     <EditText
         android:id="@+id/etItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:backgroundTint="#274060"
         android:ems="10"
-        android:hint="Update the item" />
+        android:fontFamily="@font/delius"
+        android:hint="Update the item"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/blue_500"
+        android:textColorHint="@color/blue_300" />
 
     <Button
         android:id="@+id/btnSave"
@@ -22,6 +29,7 @@
         android:layout_below="@+id/etItem"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/paprika"
         android:text="Save" />
 </RelativeLayout>
